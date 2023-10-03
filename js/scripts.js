@@ -1,5 +1,10 @@
 /*----- constants -----*/
 const AUDIO = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-simple-countdown-922.mp3');
+const RPS_LOOKUP = {
+    r: 'imgs/rock.png',
+    p: 'imgs/paper.png',
+    s: 'imgs/scissors.png'
+};
 
 /*----- app's state (variables) -----*/
 // use objectives to represent scores. p = player, t = tie, and c = computer
@@ -13,7 +18,8 @@ let winner;
 
 
 /*----- cached element references -----*/
-
+const pResultEL = document.getElementById('p-result');
+const cResultEL = document.getElementById('c-result');
 
 /*----- event listeners -----*/
 
@@ -36,6 +42,19 @@ function init(){
     render();
 }
 
+function renderScores() {
+for (let key in scores) {
+    const scoreEl = document.getElementById(`${key}-score`);
+    scoreEl.innerText = scores[key];
+    }
+}
+
+function renderResults() {
+    pResultEL.src = RPS_LOOKUP[results.p];
+    cResultEL.src = RPS_LOOKUP[results.c];
+}
+
 function render() {
-    
+    renderScores();
+    renderResults();
 }
