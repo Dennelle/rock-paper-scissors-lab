@@ -96,7 +96,8 @@ function render() {
 
     function renderCountdown(cb) {
     let count = 3;
-    AUDIO.currentTime=0;
+    AUDIO.currentTime = 0;
+    AUDIO.play();
     countdownEL.style.visibility = 'visible';
     countdownEL.innerText = count;
     const timerId = setInterval(function() {
